@@ -17,27 +17,30 @@
 
 		// openstreetmap base layers (greyscale, streets)	
 		var grayscale = L.tileLayer(mbUrl, { id: 'examples.map-20v6611k', attribution: mbAttr }),
-			streets = L.tileLayer(mbUrl, { id: 'examples.map-i875mjb7', attribution: mbAttr }),
+			streets = L.tileLayer(mbUrl, { id: 'examples.map-i875mjb7', attribution: mbAttr });
+			
+			
 			// google base layers (satellite, roadmap, hybrid, terrain)
-			googleSat = new L.Google('SATELLITE'),
+			// https://github.com/shramov/leaflet-plugins/blob/master/layer/tile/Google.js by Pavel Shramov
+			/*var googleSat = new L.Google('SATELLITE'),
 			googleRoadmap = new L.Google('ROADMAP'),
 			googleHybrid = new L.Google('HYBRID'),
-			googleTerrain = new L.Google('TERRAIN');
+			googleTerrain = new L.Google('TERRAIN');*/
 		
-		// create map - set default base layer to google satellite
+		// create map - set default base layer to openstreetmap streets
 		this.map = L.map(divID, {
 			center: center,
 			zoom: zoom,
-			layers: [googleSat],
+			layers: [streets],
 			scrollWheelZoom: 'center'
 		});
 
 		// create basic list of base layers to be inserted in menu 
 		this.baseLayers = {
-			"Google Roadmap": googleRoadmap,
+			/*"Google Roadmap": googleRoadmap,
 			"Google Satellite": googleSat,
 			"Google Hybrid": googleHybrid,
-			"Google Terrain": googleTerrain,
+			"Google Terrain": googleTerrain,*/
 			"Grayscale": grayscale,
 			"Streets": streets
 		};
